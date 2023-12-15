@@ -1,0 +1,18 @@
+<h1>Homes#top</h1>
+<p>Find me in app/views/homes/top.html.erb</p>
+<% if user_signed_in? %>
+  <h2>メモ項目一覧</h2>
+  <% if @genres.exists? %>
+    <% @genres.each do |genre| %>
+      <h3>
+        <%= link_to genre.name, genre_path(genre.id) %>
+        <%= link_to "編集", edit_genre_path(genre.id) %>
+      </h3>
+    <% end %><!--.each genre-->
+  <% else %>
+    <h3>メモがまだ存在しません</h3>
+  <% end %>
+<% else %><!--if user_signed_in?-->
+  <h3>新規登録またはログインをすることでメモを作成できます</h3>
+<% end %><!--if user_signed_in?-->
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PersonalMemo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h2><%= link_to "トップへ", root_path %></h2>
+      <% if user_signed_in? %>
+        <p>
+          ようこそ<br>
+          <%= current_user.name %>
+        </p>
+
+        <p>
+          <%= link_to "新規メモ", new_genre_path %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </p>
+
+      <% else %><!--if user_signed_in?-->
+        <p>
+          <%= link_to "about",    homes_about_path %>
+          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "ログイン", new_user_session_path %>
+        </p>
+      <% end %><!--if user_signed_in?-->
+    </header>
+    
+    <main>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      
+    </footer>
+  </body>
+</html>

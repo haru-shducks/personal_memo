@@ -1,0 +1,8 @@
+<p>genre:edit</p>
+<%= form_with model: @genre do |genre| %>
+  <h3>ジャンル名</h3>
+  <p>
+    <%= genre.text_field :name %><br>
+    <%= genre.submit "変更" %>
+  </p>
+<% end %>
